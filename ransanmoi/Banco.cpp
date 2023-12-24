@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "Banco.h"
 
 Banco::Banco()
@@ -18,33 +18,11 @@ Banco::Banco()
 
 void Banco::draw(CClientDC* pDC)
 {     
-    
-	CString strdiem;
-	CString strlv;
-	strlv.Format(_T("Level: %d"), level);
-	strdiem.Format(_T("Diem: %d   "), diem);
-	// Tăng kích thước văn bản
-	CFont font, font1;
-	font.CreatePointFont(200, _T("Arial"));  // Thay đổi thành kích thước mong muốn
-	CFont* pOldFont = pDC->SelectObject(&font);
-
-	font1.CreatePointFont(200, _T("Arial"));  
-	CFont* pOldFont1 = pDC->SelectObject(&font1);
-
-	pDC->SetTextColor(RGB(255, 0, 0));
-	// Vẽ văn bản với kích thước và chế độ nền mới
-	pDC->TextOutW(XDAU + 60, YDAU / 2, strdiem);
-	pDC->TextOutW(XDAU + 300, YDAU / 2, strlv);
-	pDC->SetTextColor(pDC->GetTextColor());
-	pDC->SetTextColor(pDC->GetTextColor());
-
-	
 	dv.draw(pDC);
 	ran.draw(pDC);
 	moi.draw(pDC);
-
-	
-	
+	score(pDC);
+	cap(pDC);
 	if (diem % 5 == 0)
 	{
 		
@@ -112,31 +90,27 @@ void Banco::randichuyen()
 		{
 			ran.godown();
 		}
-		rananmoi();
-		rananmoi2();
-		
-		
-		ktdungduoi(); 
-		kiemtrabien();
 		if (diem <= 1)
 		{
-			
+
 			Sleep(300);
 		}
-			else if (diem >= 2 && diem <= 5)
-			{
-			    
-				level = 2;
-				Sleep(100);
-				
-			}
-			else if(diem >=6 && diem <=10 )
-			{
-			
-				level = 3;
-				Sleep(50);
-				
-			}
+		else if (diem >= 2 && diem <= 5)
+		{
+
+			level = 2;
+			Sleep(100);
+		}
+		else if (diem >= 6 && diem <= 10)
+		{
+			level = 3;
+			Sleep(50);
+		}
+		rananmoi();
+		rananmoi2();
+		ktdungduoi(); 
+		kiemtrabien();
+		
 			
 	}
 }
@@ -147,19 +121,27 @@ void Banco::kiemtrabien()
 {
 	if (ran.dau.y2 <= dv.y1)
 	{
+
 		thang = 1;
+
 	}
 	if (ran.dau.x2 <= dv.x1)
 	{
+
 		thang = 1;
+
 	}
 	if (ran.dau.x1 >= dv.x2)
 	{
+
 		thang = 1;
+
 	}
 	if (ran.dau.y1 >= dv.y2)
 	{
+
 		thang = 1;
+
 	}
 }
 
@@ -170,13 +152,8 @@ void Banco::batdau()
 	diem = 0;
 }
 
-void Banco::a()
-{
 
 
-	dk = 0;
-
-}
 
 
 
@@ -286,37 +263,30 @@ void Banco::newfood()
 	
 }
 
-void Banco::test()
+
+void Banco::score(CClientDC* pDC)
 {
-
-	if (ran.dau.y2 <= dv.y1)
-	{
-		
-		thang = 1;
-
-	}
-	if (ran.dau.x2 <=dv.x1)
-	{
-		
-		thang = 1;
-
-	}
-	if (ran.dau.x1 >= dv.x2)
-	{
-		
-		thang = 1;
-
-	}
-	if (ran.dau.y1 >= dv.y2)
-	{
-		
-		thang = 1;
-
-	}
-
-
-
+	CString strdiem;
+	strdiem.Format(_T("Diem: %d   "), diem);
+	CFont font;
+	font.CreatePointFont(200, _T("Arial")); 
+	CFont* pOldFont = pDC->SelectObject(&font);
+	pDC->SetTextColor(RGB(255, 0, 0));
+	pDC->TextOutW(XDAU + 60, YDAU / 2, strdiem);
+	pDC->SetTextColor(pDC->GetTextColor());
 }
+
+void Banco::cap(CClientDC* pDC)
+{
+	CString strlv;
+	strlv.Format(_T("Level: %d"), level);
+	CFont  font1;
+	CFont* pOldFont1 = pDC->SelectObject(&font1);
+	pDC->SetTextColor(RGB(255, 0, 0));
+	pDC->TextOutW(XDAU + 300, YDAU / 2, strlv);
+	pDC->SetTextColor(pDC->GetTextColor());
+}
+	
 
 void Banco::ktdungduoi()
 {
