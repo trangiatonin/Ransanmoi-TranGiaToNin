@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "Hcn.h"
 #include "Ran.h"
 #include "Moi.h"
@@ -19,12 +19,9 @@ public:
 	
 	Hcn dv;
 	
-	
 	Ran ran;
 	Moi moi;
 	moibonus food;
-	
-
 	
 	Banco();
 	void draw(CClientDC* pDC);
@@ -32,15 +29,14 @@ public:
 	void randichuyen();
 	void kiemtrabien();
 	void batdau();
-	void a();
 	
 	int rananmoi();
 	int rananmoi2();
 	void taomoi();
 	void newfood();
 	void ktdungduoi();
-	void test();
-	
+	void score(CClientDC*pDC);
+	void cap(CClientDC* pDC);
 	
 };
 
