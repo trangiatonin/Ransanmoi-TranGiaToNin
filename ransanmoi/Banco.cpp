@@ -117,14 +117,15 @@ void Banco::randichuyen()
 		
 		
 		ktdungduoi(); 
+		kiemtrabien();
 		if (diem <= 1)
 		{
-			kiemtrabien();
+			
 			Sleep(300);
 		}
 			else if (diem >= 2 && diem <= 5)
 			{
-			    kiemtrabien();
+			    
 				level = 2;
 				Sleep(100);
 				
@@ -133,7 +134,6 @@ void Banco::randichuyen()
 			{
 			
 				level = 3;
-				test();
 				Sleep(50);
 				
 			}
@@ -147,23 +147,19 @@ void Banco::kiemtrabien()
 {
 	if (ran.dau.y2 <= dv.y1)
 	{
-		ran.dau.y2 = dv.y2;
-		ran.dau.y1 = dv.y2 - D;
+		thang = 1;
 	}
 	if (ran.dau.x2 <= dv.x1)
 	{
-		ran.dau.x2 = dv.x2;
-		ran.dau.x1 = dv.x2 -D;
+		thang = 1;
 	}
 	if (ran.dau.x1 >= dv.x2)
 	{
-		ran.dau.x1 = dv.x1;
-		ran.dau.x2 = dv.x1+D ;
+		thang = 1;
 	}
 	if (ran.dau.y1 >= dv.y2)
 	{
-		ran.dau.y1 = dv.y1;
-		ran.dau.y2 = dv.y1+D ;
+		thang = 1;
 	}
 }
 
