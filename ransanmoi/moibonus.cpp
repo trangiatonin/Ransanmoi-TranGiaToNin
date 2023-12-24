@@ -3,7 +3,7 @@
 
 void moibonus::draw(CClientDC* pDC)
 {
-	CBrush* newb = new CBrush(RGB(0, 250, 250));
+	CBrush* newb = new CBrush(RGB(20, 20, 20));
 	CBrush* oldb;
 	oldb = pDC->SelectObject(newb);
 	Tron::draw(pDC);
